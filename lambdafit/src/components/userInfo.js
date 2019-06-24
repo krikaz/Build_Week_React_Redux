@@ -10,16 +10,18 @@ const emailRef = React.createRef();
 export default function UserInfo({ props }) {
 	console.log(props.user[0]);
 
-	const updateInfo = () => {
+	const updateUserInfo = () => {
 		const existingUser = {
+      id: props.user[0].id,
 			username: nameRef.current.value,
 			age: ageRef.current.value,
 			weight: weightRef.current.value,
 			height: heightRef.current.value,
 			gender: genderRef.current.value,
 			email: emailRef.current.value,
-		};
-		props.updateInfo(existingUser);
+    };
+    console.log(props.user[0].id);
+		props.updateUserInfo(existingUser);
 	};
 
 	if (props.user[0]) {
@@ -58,7 +60,7 @@ export default function UserInfo({ props }) {
 					<input type="text" ref={emailRef} value={props.user[0].email} />
 				</label>
 
-				<button onClick={updateInfo}>Update My Info</button>
+				<button onClick={updateUserInfo}>Update My Info</button>
 			</div>
 		);
 	} else {

@@ -12,7 +12,9 @@ export const CHECKING_USER_INFO = 'CHECKING_USER_INFO';
 export const CHECKING_USER_INFO_SUCCESS = 'CHECKING_USER_INFO_SUCCESS';
 export const CHECKING_USER_INFO_FAILURE = 'CHECKING_USER_INFO_FAILURE';
 
-
+export const UPDATING_USER_INFO = 'UPDATING_USER_INFO';
+export const UPDATING_USER_INFO_SUCCESS = 'UPDATING_USER_INFO_SUCCESS';
+export const UPDATING_USER_INFO_FAILURE = 'UPDATING_USER_INFO_FAILURE';
 
 export const registerUser = ({ username, password }) => {
 	const newUser = { username: username, password: password };
@@ -78,6 +80,28 @@ export const checkUserInfo = id => {
 			})
 			.catch(error => {
 				dispatch({ type: CHECKING_USER_INFO_FAILURE, payload: error.message });
+				console.log('failure');
+				console.log(error.message);
+			});
+	};
+};
+
+export const updateUserInfo = ({ existingUser }) => {
+	return function(dispatch) {
+		dispatch({ type: UPDATING_USER_INFO });
+		console.log('updating user');
+		axios
+			.put(
+				'https://lambdafit.herokuapp.com/user/' + existingUser.id,
+				existingUser
+			)
+			.then(res => {
+				dispatch({ type: UPDATING_USER_INFO_SUCCESS, payload: res.data });
+				console.log(res.data);
+				console.log('succces');
+			})
+			.catch(error => {
+				dispatch({ type: UPDATING_USER_INFO_FAILURE, payload: error.message });
 				console.log('failure');
 				console.log(error.message);
 			});
