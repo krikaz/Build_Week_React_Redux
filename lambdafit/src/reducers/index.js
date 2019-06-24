@@ -10,6 +10,7 @@ const initialState = {
 	id: null,
 	message: '',
 	test: 'test',
+	user: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -59,7 +60,7 @@ export const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				checkingUserInfo: false,
-				user: action.payload,
+				user: [...state.user, action.payload],
 			};
 		case types.CHECKING_USER_INFO_FAILURE:
 			return {

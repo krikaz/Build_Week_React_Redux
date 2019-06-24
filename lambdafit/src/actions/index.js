@@ -12,23 +12,7 @@ export const CHECKING_USER_INFO = 'CHECKING_USER_INFO';
 export const CHECKING_USER_INFO_SUCCESS = 'CHECKING_USER_INFO_SUCCESS';
 export const CHECKING_USER_INFO_FAILURE = 'CHECKING_USER_INFO_FAILURE';
 
-export const checkUserInfo = (id) => {
-	return function(dispatch) {
-		dispatch({ type: CHECKING_USER_INFO });
-		console.log('checking user');
-		axios
-			.get('https://lambdafit.herokuapp.com/user/' + id)
-			.then(res => {
-				dispatch({ type: CHECKING_USER_INFO_SUCCESS, payload: res.data });
-				console.log('succces');
-			})
-			.catch(error => {
-				dispatch({ type: CHECKING_USER_INFO_FAILURE, payload: error.message });
-				console.log('failure');
-				console.log(error.message);
-			});
-	};
-};
+
 
 export const registerUser = ({ username, password }) => {
 	const newUser = { username: username, password: password };
@@ -75,6 +59,25 @@ export const loggingInUser = ({ username, password }) => {
 			})
 			.catch(error => {
 				dispatch({ type: LOGGING_IN_USER_FAILURE, payload: error.message });
+				console.log('failure');
+				console.log(error.message);
+			});
+	};
+};
+
+export const checkUserInfo = id => {
+	return function(dispatch) {
+		dispatch({ type: CHECKING_USER_INFO });
+		console.log('checking user');
+		axios
+			.get('https://lambdafit.herokuapp.com/user/' + id)
+			.then(res => {
+				dispatch({ type: CHECKING_USER_INFO_SUCCESS, payload: res.data });
+				console.log(res.data);
+				console.log('succces');
+			})
+			.catch(error => {
+				dispatch({ type: CHECKING_USER_INFO_FAILURE, payload: error.message });
 				console.log('failure');
 				console.log(error.message);
 			});

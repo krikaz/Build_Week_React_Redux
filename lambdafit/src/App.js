@@ -49,6 +49,7 @@ function mapStateToProps(state) {
 		error: state.error,
 		test: state.test,
 		message: state.message,
+		user: state.user,
 	};
 }
 

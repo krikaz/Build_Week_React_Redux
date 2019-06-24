@@ -5,7 +5,7 @@ import User from './user';
 export default function Home({ props }) {
 	if (localStorage.getItem('user')) {
 		const retrievedObject = JSON.parse(localStorage.getItem('user'));
-		console.log(props);
+		// console.log(props);
 		return (
 			<div>
 				<p>{retrievedObject.message}</p>
