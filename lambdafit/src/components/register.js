@@ -1,19 +1,36 @@
 import React from 'react';
 
-export default function Register() {
+export default function Register({ props }) {
+	console.log(props);
+
+	const nameRef = React.createRef();
+	const passRef = React.createRef();
+
+	const onSignIn = () => {
+		props.registerUser({ username: nameRef, password: passRef });
+	};
+
 	return (
 		<div>
 			<div>
-				<label>Username:</label>
-				<input type="text" name="username" />
+				<input type="text" placeholder="username" ref={nameRef} />
 			</div>
 
 			<div>
-				<label>Password:</label>
-				<input type="password" name="password" required />
+				<input type="password" placeholder="password" ref={passRef} />
 			</div>
 
-			<input type="submit" value="Sign in" />
+			<button type="submit" onClick={onSignIn}>
+				Sign In
+			</button>
+
+			<div>
+				{props.test}
+				{props.exercises}
+				{props.registeringUser}
+				{props.token}
+				{props.error}
+			</div>
 		</div>
 	);
 }

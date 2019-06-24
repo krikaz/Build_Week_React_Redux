@@ -5,6 +5,7 @@ const initialState = {
 	registeringUser: false,
 	token: null,
 	error: null,
+	test: 'test',
 };
 
 export const rootReducer = (state = initialState, action) => {
