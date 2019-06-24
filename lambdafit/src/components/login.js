@@ -1,19 +1,18 @@
 import React from 'react';
 
-export default function Register({ props }) {
-	// console.log(props);
-
+export default function Login({ props }) {
 	const nameRef = React.createRef();
 	const passRef = React.createRef();
 
-	const onSignIn = () => {
-		const newUser = {
+	const onLogIn = () => {
+		const existingUser = {
 			username: nameRef.current.value,
 			password: passRef.current.value,
 		};
-		console.log(newUser);
-		props.registerUser(newUser);
-	};
+		console.log(existingUser);
+		props.loggingInUser(existingUser);
+  };
+  
 
 	return (
 		<div>
@@ -25,12 +24,12 @@ export default function Register({ props }) {
 				<input type="password" placeholder="password" ref={passRef} />
 			</div>
 
-			<button type="submit" onClick={onSignIn}>
-				Sign In
+			<button type="submit" onClick={onLogIn}>
+				Log In
 			</button>
 
-			<div>
-			</div>
+      {/* <div>{props.message}</div> */}
+
 		</div>
 	);
 }
