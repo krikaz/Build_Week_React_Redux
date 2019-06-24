@@ -2,10 +2,10 @@ import React from 'react';
 import UserInfo from './userInfo';
 
 export default class User extends React.Component {
-	constructor({ props, id }) {
-		super({ props, id });
-		// console.log(this.props);
-	}
+	// constructor({ props, id }) {
+	// 	super({ props, id });
+	// 	// console.log(this.props);
+	// }
 
 	LogginProps() {
 		console.log(this.props.props.user[0]);
