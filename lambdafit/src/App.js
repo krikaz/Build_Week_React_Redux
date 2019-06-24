@@ -27,7 +27,7 @@ class App extends React.Component {
 					</ul>
 				</nav>
 
-				<Route path="/" exact component={Home} />
+				<Route path="/" exact render={() => <Home props={this.props} />} />
 
 				<Route
 					path="/register/"

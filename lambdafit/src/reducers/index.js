@@ -4,6 +4,7 @@ const initialState = {
 	exercises: [],
 	registeringUser: false,
 	loggingInUser: false,
+	checkingUserInfo: false,
 	token: null,
 	error: null,
 	id: null,
@@ -47,6 +48,23 @@ export const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				loggingInUser: false,
+				error: action.payload,
+			};
+		case types.CHECKING_USER_INFO:
+			return {
+				...state,
+				checkingUserInfo: true,
+			};
+		case types.CHECKING_USER_INFO_SUCCESS:
+			return {
+				...state,
+				checkingUserInfo: false,
+				user: action.payload,
+			};
+		case types.CHECKING_USER_INFO_FAILURE:
+			return {
+				...state,
+				checkingUserInfo: false,
 				error: action.payload,
 			};
 		default:

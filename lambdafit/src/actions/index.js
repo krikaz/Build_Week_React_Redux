@@ -8,6 +8,28 @@ export const LOGGING_IN_USER = 'LOGGING_IN_USER';
 export const LOGGING_IN_USER_SUCCESS = 'LOGGING_IN_USER_SUCCESS';
 export const LOGGING_IN_USER_FAILURE = 'LOGGING_IN_USER_FAILURE';
 
+export const CHECKING_USER_INFO = 'CHECKING_USER_INFO';
+export const CHECKING_USER_INFO_SUCCESS = 'CHECKING_USER_INFO_SUCCESS';
+export const CHECKING_USER_INFO_FAILURE = 'CHECKING_USER_INFO_FAILURE';
+
+export const checkUserInfo = (id) => {
+	return function(dispatch) {
+		dispatch({ type: CHECKING_USER_INFO });
+		console.log('checking user');
+		axios
+			.get('https://lambdafit.herokuapp.com/user/' + id)
+			.then(res => {
+				dispatch({ type: CHECKING_USER_INFO_SUCCESS, payload: res.data });
+				console.log('succces');
+			})
+			.catch(error => {
+				dispatch({ type: CHECKING_USER_INFO_FAILURE, payload: error.message });
+				console.log('failure');
+				console.log(error.message);
+			});
+	};
+};
+
 export const registerUser = ({ username, password }) => {
 	const newUser = { username: username, password: password };
 	return function(dispatch) {
@@ -45,7 +67,7 @@ export const loggingInUser = ({ username, password }) => {
 						id: res.data.id,
 					},
 				});
-        window.localStorage.setItem('user', JSON.stringify(res.data));
+				window.localStorage.setItem('user', JSON.stringify(res.data));
 				console.log('succces');
 				console.log(res.data.token);
 				console.log(res.data.message);
