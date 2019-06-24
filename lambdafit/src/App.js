@@ -4,16 +4,13 @@ import { connect } from 'react-redux';
 import * as actions from './actions';
 import Register from './components/register';
 import Login from './components/login';
+import Home from './components/home';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-
-let retrievedObject = { message: '' };
 
 class App extends React.Component {
 	render() {
 		// console.log(this.props);
-		if (localStorage.getItem('user')) {
-			retrievedObject = JSON.parse(localStorage.getItem('user'));
-		}
+
 		return (
 			<BrowserRouter>
 				<nav>
@@ -30,8 +27,7 @@ class App extends React.Component {
 					</ul>
 				</nav>
 
-				{/* <Route path="/" exact component={Home} /> */}
-				<p>{retrievedObject.message}</p>
+				<Route path="/" exact component={Home} />
 
 				<Route
 					path="/register/"
