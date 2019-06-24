@@ -1,13 +1,18 @@
 import React from 'react';
 
 export default function Register({ props }) {
-	console.log(props);
+	// console.log(props);
 
 	const nameRef = React.createRef();
 	const passRef = React.createRef();
 
 	const onSignIn = () => {
-		props.registerUser({ username: nameRef, password: passRef });
+		const newUser = {
+			username: nameRef.current.value,
+			password: passRef.current.value,
+		};
+		console.log(newUser);
+		props.registerUser(newUser);
 	};
 
 	return (
