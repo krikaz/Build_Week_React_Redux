@@ -8,6 +8,8 @@ const initialState = {
 	test: 'test',
 };
 
+
+
 export const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case types.REGISTERING_USER:

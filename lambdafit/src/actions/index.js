@@ -12,7 +12,8 @@ export const registerUser = ({ username, password }) => {
 		axios
 			.post('https://lambdafit.herokuapp.com/auth/register/', newUser)
 			.then(res => {
-				dispatch({ type: REGISTERING_USER_SUCCESS, payload: res.data.token });
+        dispatch({ type: REGISTERING_USER_SUCCESS, payload: res.data.token });
+        window.localStorage.setItem('token', res.data.token);
 				console.log('succces');
 				console.log(res.data.token);
 			})
