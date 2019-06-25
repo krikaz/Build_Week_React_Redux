@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import User from './user';
-import * as actions from '../actions';
-import { connect } from 'react-redux';
 
-function Home(props) {
+export default function Home(props) {
 	if (localStorage.getItem('user')) {
 		const retrievedObject = JSON.parse(localStorage.getItem('user'));
 		if (props.id === null) {
@@ -30,22 +28,3 @@ function Home(props) {
 		);
 	}
 }
-
-function mapStateToProps(state) {
-	return {
-		registeringUser: state.registeringUser,
-		loggingInUser: state.loggingInUser,
-		checkingUserInfo: state.checkingUserInfo,
-		updatingUserInfo: state.updatingUserInfo,
-		token: state.token,
-		error: state.error,
-		message: state.message,
-		user: state.user,
-		id: state.id,
-	};
-}
-
-export default connect(
-	mapStateToProps,
-	actions
-)(Home);
