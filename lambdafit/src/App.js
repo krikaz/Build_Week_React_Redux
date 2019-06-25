@@ -42,7 +42,6 @@ class App extends React.Component {
 function mapStateToProps(state) {
 	// console.log(state);
 	return {
-		exercises: state.exercises,
 		registeringUser: state.registeringUser,
 		loggingInUser: state.loggingInUser,
 		token: state.token,

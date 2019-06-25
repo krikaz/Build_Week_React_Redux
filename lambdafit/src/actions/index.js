@@ -90,6 +90,7 @@ export const updateUserInfo = ({ existingUser }) => {
 	return function(dispatch) {
 		dispatch({ type: UPDATING_USER_INFO });
 		console.log('updating user');
+		console.log(existingUser);
 		axios
 			.put(
 				'https://lambdafit.herokuapp.com/user/' + existingUser.id,

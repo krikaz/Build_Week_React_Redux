@@ -1,7 +1,6 @@
 import * as types from '../actions';
 
 const initialState = {
-	exercises: [],
 	registeringUser: false,
 	loggingInUser: false,
 	checkingUserInfo: false,
@@ -10,7 +9,6 @@ const initialState = {
 	error: null,
 	id: null,
 	message: '',
-	test: 'test',
 	user: [],
 };
 
