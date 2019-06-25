@@ -6,12 +6,18 @@ const Container = styled.div`
 	flex-direction: column;
 `;
 
+const ageRef = React.createRef();
+const weightRef = React.createRef();
+const heightRef = React.createRef();
+const genderRef = React.createRef();
+const emailRef = React.createRef();
+
 export default function UserInfo(props) {
-	const ageRef = React.createRef();
-	const weightRef = React.createRef();
-	const heightRef = React.createRef();
-	const genderRef = React.createRef();
-	const emailRef = React.createRef();
+	// console.log(props);
+
+	const onCheckUserInfo = () => {
+		props.checkUserInfo(props.id);
+	};
 
 	const onUpdateUserInfo = () => {
 		const existingUser = {
@@ -27,6 +33,11 @@ export default function UserInfo(props) {
 		props.updateUserInfo(props.id, existingUser);
 		// window.location.reload();
 	};
+
+	// if (props.id) {
+	// 	props.checkUserInfo(props.id);
+	// 	// console.log(props);
+	// }
 
 	if (props.user[0]) {
 		return (
@@ -74,6 +85,6 @@ export default function UserInfo(props) {
 			</Container>
 		);
 	} else {
-		return null;
+		return <button onClick={onCheckUserInfo}>click</button>;
 	}
 }

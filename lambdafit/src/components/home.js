@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import User from './user';
 
 export default function Home(props) {
 	if (localStorage.getItem('user')) {
@@ -12,7 +11,6 @@ export default function Home(props) {
 		return (
 			<div>
 				<p>{retrievedObject.message}</p>
-				<User {...props} />
 			</div>
 		);
 	} else {
