@@ -6,6 +6,7 @@ export default function Home(props) {
 		const retrievedObject = JSON.parse(localStorage.getItem('user'));
 		if (props.id === null) {
 			props.updateId(retrievedObject.user_id);
+			props.updateToken(retrievedObject.token);
 		}
 
 		return (

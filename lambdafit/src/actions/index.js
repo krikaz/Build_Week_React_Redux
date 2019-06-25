@@ -17,12 +17,44 @@ export const UPDATING_USER_INFO_SUCCESS = 'UPDATING_USER_INFO_SUCCESS';
 export const UPDATING_USER_INFO_FAILURE = 'UPDATING_USER_INFO_FAILURE';
 
 export const UPDATE_ID = 'UPDATE_ID';
+export const UPDATE_TOKEN = 'UPDATE_TOKEN';
 
 export const FETCHING_USER_EXERCISES = 'FETCHING_USER_EXERCISES';
 export const FETCHING_USER_EXERCISES_SUCCESS =
 	'FETCHING_USER_EXERCISES_SUCCESS';
 export const FETCHING_USER_EXERCISES_FAILURE =
 	'FETCHING_USER_EXERCISES_FAILURE';
+
+export const CREATING_NEW_EXERCISE = 'CREATING_NEW_EXERCISE';
+export const CREATING_NEW_EXERCISE_SUCCESS = 'CREATING_NEW_EXERCISE_SUCCESS';
+export const CREATING_NEW_EXERCISE_FAILURE = 'CREATING_NEW_EXERCISE_FAILURE';
+
+export const createNewExercise = (token, exercise) => {
+	return function(dispatch) {
+		dispatch({ type: CREATING_NEW_EXERCISE });
+		console.log('creating new exercise');
+		// console.log(exercise);
+		axios
+			.post(
+				'https://lambdafit.herokuapp.com/exercises',
+				{ headers: { "Authorization": token } },
+				exercise
+			)
+			.then(res => {
+				dispatch({ type: CREATING_NEW_EXERCISE_SUCCESS, payload: res.data });
+				// console.log(res.data);
+				console.log('succces');
+			})
+			.catch(error => {
+				dispatch({
+					type: CREATING_NEW_EXERCISE_FAILURE,
+					payload: error.message,
+				});
+				console.log('failure');
+				console.log(error.message);
+			});
+	};
+};
 
 export const fetchUserExercises = id => {
 	return function(dispatch) {
@@ -48,6 +80,10 @@ export const fetchUserExercises = id => {
 
 export const updateId = id => {
 	return { type: UPDATE_ID, payload: id };
+};
+
+export const updateToken = token => {
+	return { type: UPDATE_TOKEN, payload: token };
 };
 
 export const registerUser = ({ username, password }) => {

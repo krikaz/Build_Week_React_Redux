@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ExerciseForm from './exerciseForm';
 
 const SingleExercise = styled.div`
 	display: flex;
@@ -20,22 +21,26 @@ export default function Exercises(props) {
 	};
 
 	if (props.exercises[0]) {
-		console.log(props.exercises);
+		// console.log(props.exercises);
 		return (
-			<ContainerExercises>
-				{props.exercises.map(ex => {
-					return (
-						<SingleExercise key={ex.id}>
-							<p>name = {ex.name}</p>
-							<p>body region worked = {ex.body_region}</p>
-							<p>amount lifted = {ex.amount_lifted}</p>
-							<p>reps = {ex.reps}</p>
-							<p>sets = {ex.sets}</p>
-							<p>date = {ex.date}</p>
-						</SingleExercise>
-					);
-				})}
-			</ContainerExercises>
+			<div>
+				<ContainerExercises>
+					{props.exercises.map(ex => {
+						return (
+							<SingleExercise key={ex.id}>
+								<p>name = {ex.name}</p>
+								<p>body region worked = {ex.body_region}</p>
+								<p>amount lifted = {ex.amount_lifted}</p>
+								<p>reps = {ex.reps}</p>
+								<p>sets = {ex.sets}</p>
+								<p>date = {ex.date}</p>
+							</SingleExercise>
+						);
+					})}
+				</ContainerExercises>
+
+				<ExerciseForm {...props} />
+			</div>
 		);
 	} else {
 		// console.log(props.exercises[0]);
