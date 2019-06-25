@@ -1,4 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
 
 export default function UserInfo(props) {
 	const ageRef = React.createRef();
@@ -19,25 +25,24 @@ export default function UserInfo(props) {
 		};
 		console.log(existingUser);
 		props.updateUserInfo(props.id, existingUser);
+		// window.location.reload();
 	};
 
 	if (props.user[0]) {
 		return (
-			<div>
+			<Container>
 				<label>
-					my ID
-					<span>{props.id}</span>
+					my ID : <span>{props.id}</span>
 				</label>
 				<label>
-					my name
-					<span>{props.user[0].username}</span>
+					my name : <span>{props.user[0].username}</span>
 				</label>
 				<label>
-					my age
+					my age :
 					<input type="number" ref={ageRef} placeholder={props.user[0].age} />
 				</label>
 				<label>
-					my weight
+					my weight :
 					<input
 						type="number"
 						ref={weightRef}
@@ -45,7 +50,7 @@ export default function UserInfo(props) {
 					/>
 				</label>
 				<label>
-					my height
+					my height :
 					<input
 						type="number"
 						ref={heightRef}
@@ -53,7 +58,7 @@ export default function UserInfo(props) {
 					/>
 				</label>
 				<label>
-					my gender
+					my gender :
 					<input
 						type="text"
 						ref={genderRef}
@@ -61,12 +66,12 @@ export default function UserInfo(props) {
 					/>
 				</label>
 				<label>
-					my email
+					my email :
 					<input type="text" ref={emailRef} placeholder={props.user[0].email} />
 				</label>
 
 				<button onClick={onUpdateUserInfo}>Update My Info</button>
-			</div>
+			</Container>
 		);
 	} else {
 		return null;
