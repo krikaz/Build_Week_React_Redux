@@ -27,28 +27,27 @@ class App extends React.Component {
 					</ul>
 				</nav>
 
-				<Route path="/" exact render={() => <Home props={this.props} />} />
+				{/* <Route path="/" exact render={() => <Home />} /> */}
+				<Route path="/" exact render={() => <Home {...this.props} />} />
 
-				<Route
-					path="/register/"
-					render={() => <Register props={this.props} />}
-				/>
-				<Route path="/login/" render={() => <Login props={this.props} />} />
+				<Route path="/register/" render={() => <Register {...this.props} />} />
+				<Route path="/login/" render={() => <Login {...this.props} />} />
 			</BrowserRouter>
 		);
 	}
 }
 
 function mapStateToProps(state) {
-	// console.log(state);
 	return {
 		registeringUser: state.registeringUser,
 		loggingInUser: state.loggingInUser,
+		checkingUserInfo: state.checkingUserInfo,
+		updatingUserInfo: state.updatingUserInfo,
 		token: state.token,
 		error: state.error,
-		test: state.test,
 		message: state.message,
 		user: state.user,
+		id: state.id,
 	};
 }
 

@@ -18,7 +18,7 @@ export default function UserInfo({ user }) {
 			gender: genderRef.current.value,
 			email: emailRef.current.value,
 		};
-		props.updateUserInfo(existingUser);
+		user.updateUserInfo(existingUser);
 	};
 
 	if (user) {
@@ -59,6 +59,4 @@ export default function UserInfo({ user }) {
 	} else {
 		return null;
 	}
-
-	// return null;
 }
