@@ -1,59 +1,71 @@
 import React from 'react';
 
-export default function UserInfo({ user }) {
-	const nameRef = React.createRef();
+export default function UserInfo(props) {
 	const ageRef = React.createRef();
 	const weightRef = React.createRef();
 	const heightRef = React.createRef();
 	const genderRef = React.createRef();
 	const emailRef = React.createRef();
 
-	const updateUserInfo = () => {
+	const onUpdateUserInfo = () => {
 		const existingUser = {
-			id: user.id,
-			username: nameRef.current.value,
+			// id: props.id,
+			// username: nameRef.current.value,
 			age: ageRef.current.value,
 			weight: weightRef.current.value,
 			height: heightRef.current.value,
 			gender: genderRef.current.value,
 			email: emailRef.current.value,
 		};
-		user.updateUserInfo(existingUser);
+		console.log(existingUser);
+		props.updateUserInfo(props.id, existingUser);
 	};
 
-	if (user) {
+	if (props.user[0]) {
 		return (
 			<div>
 				<label>
 					my ID
-					<span>{user.id}</span>
+					<span>{props.id}</span>
 				</label>
 				<label>
 					my name
-					<input type="text" ref={nameRef} value={user.username} />
+					<span>{props.user[0].username}</span>
 				</label>
 				<label>
 					my age
-					<input type="number" ref={ageRef} value={user.age} />
+					<input type="number" ref={ageRef} placeholder={props.user[0].age} />
 				</label>
 				<label>
 					my weight
-					<input type="number" ref={weightRef} value={user.weight} />
+					<input
+						type="number"
+						ref={weightRef}
+						placeholder={props.user[0].weight}
+					/>
 				</label>
 				<label>
 					my height
-					<input type="number" ref={heightRef} value={user.height} />
+					<input
+						type="number"
+						ref={heightRef}
+						placeholder={props.user[0].height}
+					/>
 				</label>
 				<label>
 					my gender
-					<input type="text" ref={genderRef} value={user.gender} />
+					<input
+						type="text"
+						ref={genderRef}
+						placeholder={props.user[0].gender}
+					/>
 				</label>
 				<label>
 					my email
-					<input type="text" ref={emailRef} value={user.email} />
+					<input type="text" ref={emailRef} placeholder={props.user[0].email} />
 				</label>
 
-				<button onClick={updateUserInfo}>Update My Info</button>
+				<button onClick={onUpdateUserInfo}>Update My Info</button>
 			</div>
 		);
 	} else {

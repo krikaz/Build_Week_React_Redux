@@ -95,16 +95,13 @@ export const checkUserInfo = id => {
 	};
 };
 
-export const updateUserInfo = ({ existingUser }) => {
+export const updateUserInfo = (id, existingUser) => {
 	return function(dispatch) {
 		dispatch({ type: UPDATING_USER_INFO });
 		console.log('updating user');
 		console.log(existingUser);
 		axios
-			.put(
-				'https://lambdafit.herokuapp.com/user/' + existingUser.id,
-				existingUser
-			)
+			.put('https://lambdafit.herokuapp.com/user/' + id, existingUser)
 			.then(res => {
 				dispatch({ type: UPDATING_USER_INFO_SUCCESS, payload: res.data });
 				console.log(res.data);

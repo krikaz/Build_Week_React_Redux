@@ -1,18 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import User from './user';
+import User from './user';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
 
 function Home(props) {
 	if (localStorage.getItem('user')) {
 		const retrievedObject = JSON.parse(localStorage.getItem('user'));
-		props.updateId(retrievedObject.user_id);
+		if (props.id === null) {
+			props.updateId(retrievedObject.user_id);
+		}
 
 		return (
 			<div>
 				<p>{retrievedObject.message}</p>
-				{/* <User {...this.props, id = retrievedObject.user_id } /> */}
+				<User {...props} />
 			</div>
 		);
 	} else {

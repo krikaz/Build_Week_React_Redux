@@ -1,26 +1,22 @@
 import React from 'react';
 import UserInfo from './userInfo';
 
-export default class User extends React.Component {
-	LogginProps() {
-		console.log(this.props.user[0]);
-	}
+export default function User(props) {
+	const LogginProps = () => {
+		console.log(props.user[0]);
+	};
 
-	checkUserInfo() {
-		this.props.checkUserInfo(this.props.id);
-	}
+	const checkUserInfo = () => {
+		props.checkUserInfo(props.id);
+	};
 
-	render() {
-		console.log(this.props);
+	return (
+		<div>
+			<button onClick={checkUserInfo}>Check my info</button>
 
-		return (
-			<div>
-				<button onClick={this.checkUserInfo.bind(this)}>Check my info</button>
+			<button onClick={LogginProps}>Log my info</button>
 
-				<button onClick={this.LogginProps.bind(this)}>Log my info</button>
-
-				<UserInfo user={this.props.user[0]} />
-			</div>
-		);
-	}
+			<UserInfo {...props} />
+		</div>
+	);
 }
