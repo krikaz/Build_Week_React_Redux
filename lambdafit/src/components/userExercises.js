@@ -1,9 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
+const SingleExercise = styled.div`
 	display: flex;
 	flex-direction: column;
+`;
+
+const ContainerExercises = styled.div`
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
 `;
 
 export default function Exercises(props) {
@@ -15,20 +22,20 @@ export default function Exercises(props) {
 	if (props.exercises[0]) {
 		console.log(props.exercises);
 		return (
-			<div>
+			<ContainerExercises>
 				{props.exercises.map(ex => {
 					return (
-						<Container key={ex.id}>
+						<SingleExercise key={ex.id}>
 							<p>name = {ex.name}</p>
 							<p>body region worked = {ex.body_region}</p>
 							<p>amount lifted = {ex.amount_lifted}</p>
 							<p>reps = {ex.reps}</p>
 							<p>sets = {ex.sets}</p>
 							<p>date = {ex.date}</p>
-						</Container>
+						</SingleExercise>
 					);
 				})}
-			</div>
+			</ContainerExercises>
 		);
 	} else {
 		// console.log(props.exercises[0]);
