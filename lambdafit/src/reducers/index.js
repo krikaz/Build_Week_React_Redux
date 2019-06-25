@@ -5,11 +5,13 @@ const initialState = {
 	loggingInUser: false,
 	checkingUserInfo: false,
 	updatingUserInfo: false,
+	fetchingUserExercises: false,
 	token: null,
 	error: null,
 	id: null,
 	message: '',
 	user: [],
+	exercises: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -88,6 +90,23 @@ export const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				id: action.payload,
+			};
+		case types.FETCHING_USER_EXERCISES:
+			return {
+				...state,
+				fetchingUserExercises: true,
+			};
+		case types.FETCHING_USER_EXERCISES_SUCCESS:
+			return {
+				...state,
+				fetchingUserExercises: false,
+				exercises: [...state.exercises, action.payload],
+			};
+		case types.FETCHING_USER_EXERCISES_FAILURE:
+			return {
+				...state,
+				fetchingUserExercises: false,
+				error: action.payload,
 			};
 		default:
 			return state;

@@ -18,10 +18,35 @@ export const UPDATING_USER_INFO_FAILURE = 'UPDATING_USER_INFO_FAILURE';
 
 export const UPDATE_ID = 'UPDATE_ID';
 
+export const FETCHING_USER_EXERCISES = 'FETCHING_USER_EXERCISES';
+export const FETCHING_USER_EXERCISES_SUCCESS =
+	'FETCHING_USER_EXERCISES_SUCCESS';
+export const FETCHING_USER_EXERCISES_FAILURE =
+	'FETCHING_USER_EXERCISES_FAILURE';
+
+export const fetchUserExercises = id => {
+	return function(dispatch) {
+		dispatch({ type: FETCHING_USER_EXERCISES });
+		console.log('fetching user exercises');
+		axios
+			.get('https://lambdafit.herokuapp.com/user/' + id + '/exercises')
+			.then(res => {
+				dispatch({ type: FETCHING_USER_EXERCISES_SUCCESS, payload: res.data });
+				console.log('succces');
+				console.log(res.data);
+			})
+			.catch(error => {
+				dispatch({
+					type: FETCHING_USER_EXERCISES_SUCCESS,
+					payload: error.message,
+				});
+				console.log('failure');
+				console.log(error.message);
+			});
+	};
+};
+
 export const updateId = id => {
-	// return function(dispatch) {
-	// 	dispatch({ type: UPDATE_ID, payload: id });
-	// };
 	return { type: UPDATE_ID, payload: id };
 };
 
@@ -36,7 +61,7 @@ export const registerUser = ({ username, password }) => {
 				dispatch({ type: REGISTERING_USER_SUCCESS, payload: res.data.token });
 				window.localStorage.setItem('token', res.data.token);
 				console.log('succces');
-				console.log(res.data.token);
+				// console.log(res.data.token);
 			})
 			.catch(error => {
 				dispatch({ type: REGISTERING_USER_FAILURE, payload: error.message });
@@ -64,8 +89,8 @@ export const loggingInUser = ({ username, password }) => {
 				});
 				window.localStorage.setItem('user', JSON.stringify(res.data));
 				console.log('succces');
-				console.log(res.data.token);
-				console.log(res.data.message);
+				// console.log(res.data.token);
+				// console.log(res.data.message);
 				window.location = '/';
 			})
 			.catch(error => {
@@ -84,7 +109,7 @@ export const checkUserInfo = id => {
 			.get('https://lambdafit.herokuapp.com/user/' + id)
 			.then(res => {
 				dispatch({ type: CHECKING_USER_INFO_SUCCESS, payload: res.data });
-				console.log(res.data);
+				// console.log(res.data);
 				console.log('succces');
 			})
 			.catch(error => {
@@ -99,12 +124,12 @@ export const updateUserInfo = (id, existingUser) => {
 	return function(dispatch) {
 		dispatch({ type: UPDATING_USER_INFO });
 		console.log('updating user');
-		console.log(existingUser);
+		// console.log(existingUser);
 		axios
 			.put('https://lambdafit.herokuapp.com/user/' + id, existingUser)
 			.then(res => {
 				dispatch({ type: UPDATING_USER_INFO_SUCCESS, payload: res.data });
-				console.log(res.data);
+				// console.log(res.data);
 				console.log('succces');
 			})
 			.catch(error => {

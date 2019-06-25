@@ -52,11 +52,13 @@ function mapStateToProps(state) {
 		loggingInUser: state.loggingInUser,
 		checkingUserInfo: state.checkingUserInfo,
 		updatingUserInfo: state.updatingUserInfo,
+		fetchingUserExercises: state.fetchingUserExercises,
 		token: state.token,
 		error: state.error,
+		id: state.id,
 		message: state.message,
 		user: state.user,
-		id: state.id,
+		exercises: state.exercises,
 	};
 }
 
