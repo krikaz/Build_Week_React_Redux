@@ -5,13 +5,9 @@ import * as actions from '../actions';
 import { connect } from 'react-redux';
 
 function Home(props) {
-	// console.log(props);
 	if (localStorage.getItem('user')) {
 		const retrievedObject = JSON.parse(localStorage.getItem('user'));
-		// console.log(retrievedObject);
-		console.log(retrievedObject.user_id);
 		props.updateId(retrievedObject.user_id);
-		console.log(props);
 
 		return (
 			<div>

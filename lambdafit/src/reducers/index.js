@@ -84,7 +84,7 @@ export const rootReducer = (state = initialState, action) => {
 				updatingUserInfo: false,
 				error: action.payload,
 			};
-		case types.updateId:
+		case types.UPDATE_ID:
 			return {
 				...state,
 				id: action.payload,

@@ -19,9 +19,10 @@ export const UPDATING_USER_INFO_FAILURE = 'UPDATING_USER_INFO_FAILURE';
 export const UPDATE_ID = 'UPDATE_ID';
 
 export const updateId = id => {
-	return function(dispatch) {
-		dispatch({ type: UPDATE_ID, payload: id });
-	};
+	// return function(dispatch) {
+	// 	dispatch({ type: UPDATE_ID, payload: id });
+	// };
+	return { type: UPDATE_ID, payload: id };
 };
 
 export const registerUser = ({ username, password }) => {
