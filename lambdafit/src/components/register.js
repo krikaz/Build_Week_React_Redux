@@ -1,8 +1,6 @@
 import React from 'react';
 
-export default function Register({ props }) {
-	// console.log(props);
-
+export default function Register(props) {
 	const nameRef = React.createRef();
 	const passRef = React.createRef();
 
@@ -11,7 +9,6 @@ export default function Register({ props }) {
 			username: nameRef.current.value,
 			password: passRef.current.value,
 		};
-		console.log(newUser);
 		props.registerUser(newUser);
 	};
 
@@ -29,8 +26,7 @@ export default function Register({ props }) {
 				Sign In
 			</button>
 
-			<div>
-			</div>
+			<div />
 		</div>
 	);
 }

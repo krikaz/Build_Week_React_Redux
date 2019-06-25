@@ -9,8 +9,6 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 class App extends React.Component {
 	render() {
-		// console.log(this.props);
-
 		return (
 			<BrowserRouter>
 				<nav>

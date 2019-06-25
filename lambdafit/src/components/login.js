@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Login({ props }) {
+export default function Login(props) {
 	const nameRef = React.createRef();
 	const passRef = React.createRef();
 
@@ -9,10 +9,8 @@ export default function Login({ props }) {
 			username: nameRef.current.value,
 			password: passRef.current.value,
 		};
-		console.log(existingUser);
 		props.loggingInUser(existingUser);
-  };
-  
+	};
 
 	return (
 		<div>
@@ -27,9 +25,6 @@ export default function Login({ props }) {
 			<button type="submit" onClick={onLogIn}>
 				Log In
 			</button>
-
-      {/* <div>{props.message}</div> */}
-
 		</div>
 	);
 }
