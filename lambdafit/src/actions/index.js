@@ -33,7 +33,7 @@ export const fetchUserExercises = id => {
 			.then(res => {
 				dispatch({ type: FETCHING_USER_EXERCISES_SUCCESS, payload: res.data });
 				console.log('succces');
-				console.log(res.data);
+				// console.log(res.data);
 			})
 			.catch(error => {
 				dispatch({
