@@ -5,6 +5,9 @@ import ExerciseForm from './exerciseForm';
 const SingleExercise = styled.div`
 	display: flex;
 	flex-direction: column;
+	background-color: lightblue;
+	padding: 1rem;
+	margin: 1rem;
 `;
 
 const ContainerExercises = styled.div`

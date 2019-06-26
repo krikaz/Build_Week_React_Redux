@@ -37,7 +37,7 @@ export const createNewExercise = (token, exercise) => {
 		axios
 			.post(
 				'https://lambdafit.herokuapp.com/exercises',
-				{ headers: { "Authorization": token } },
+				{ headers: { Authorization: token } },
 				exercise
 			)
 			.then(res => {

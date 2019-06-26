@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import * as actions from './actions';
@@ -13,6 +12,7 @@ import styled from 'styled-components';
 const Nav = styled.nav`
 	display: flex;
 	justify-content: space-around;
+	margin: 1rem;
 `;
 
 class App extends React.Component {
