@@ -47,6 +47,7 @@ export const deleteExercise = (id, token) => {
 				dispatch({ type: DELETING_EXERCISE_SUCCESS });
 				// console.log(res.data);
 				console.log('succces');
+				window.location = '/myexercises';
 			})
 			.catch(error => {
 				dispatch({
@@ -72,6 +73,7 @@ export const createNewExercise = (token, exercise) => {
 				dispatch({ type: CREATING_NEW_EXERCISE_SUCCESS, payload: res.data });
 				// console.log(res.data);
 				console.log('succces');
+				window.location = '/myexercises';
 			})
 			.catch(error => {
 				dispatch({
@@ -94,6 +96,7 @@ export const fetchUserExercises = id => {
 				dispatch({ type: FETCHING_USER_EXERCISES_SUCCESS, payload: res.data });
 				console.log('succces');
 				// console.log(res.data);
+				// window.location = '/myexercises';
 			})
 			.catch(error => {
 				dispatch({
@@ -130,6 +133,7 @@ export const registerUser = ({ username, password }) => {
 				window.localStorage.setItem('token', res.data.token);
 				console.log('succces');
 				// console.log(res.data.token);
+				window.location = '/login';
 			})
 			.catch(error => {
 				dispatch({ type: REGISTERING_USER_FAILURE, payload: error.message });
@@ -199,6 +203,7 @@ export const updateUserInfo = (id, existingUser) => {
 				dispatch({ type: UPDATING_USER_INFO_SUCCESS, payload: res.data });
 				// console.log(res.data);
 				console.log('succces');
+				window.location = '/myinfo';
 			})
 			.catch(error => {
 				dispatch({ type: UPDATING_USER_INFO_FAILURE, payload: error.message });

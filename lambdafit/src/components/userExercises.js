@@ -69,6 +69,7 @@ export default function Exercises(props) {
 						);
 					})}
 				</ContainerExercises>
+				<ExerciseForm {...props} />
 			</div>
 		);
 	} else {
