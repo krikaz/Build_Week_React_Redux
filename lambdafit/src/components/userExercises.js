@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ExerciseForm from './exerciseForm';
 import UpdateExercise from './updateExercise';
@@ -35,7 +36,7 @@ export default function Exercises(props) {
 
 	useEffect(() => {
 		props.fetchUserExercises(props.id);
-	}, []);
+	}, [props]);
 
 	const onDeleteExercise = id => {
 		props.deleteExercise(id, props.token);
@@ -59,6 +60,7 @@ export default function Exercises(props) {
 					{props.exercises.map(ex => {
 						return (
 							<SingleExercise key={ex.id}>
+								<Link to="/myexercises/update">Update</Link>
 								<ContainerButton>
 									<StyledButton onClick={() => onDeleteExercise(ex.id)}>
 										X
@@ -70,12 +72,16 @@ export default function Exercises(props) {
 								<p>reps = {ex.reps}</p>
 								<p>sets = {ex.sets}</p>
 								<p>date = {ex.date}</p>
+								<Route
+									path="/myexercises/update/"
+									render={() => <UpdateExercise {...props} />}
+								/>
 							</SingleExercise>
 						);
 					})}
 				</ContainerExercises>
 				<ExerciseForm {...props} />
-				<UpdateExercise {...props} />
+				{/* <UpdateExercise {...props} /> */}
 			</div>
 		);
 	} else {

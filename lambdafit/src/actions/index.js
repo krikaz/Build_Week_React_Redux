@@ -19,6 +19,7 @@ export const UPDATING_USER_INFO_FAILURE = 'UPDATING_USER_INFO_FAILURE';
 export const UPDATE_ID = 'UPDATE_ID';
 export const UPDATE_TOKEN = 'UPDATE_TOKEN';
 export const UPDATE_ISLOGGEDIN = 'UPDATE_ISLOGGEDIN';
+export const UPDATE_ID_EXERCISE = 'UPDATE_ID_EXERCISE';
 
 export const FETCHING_USER_EXERCISES = 'FETCHING_USER_EXERCISES';
 export const FETCHING_USER_EXERCISES_SUCCESS =
@@ -147,6 +148,10 @@ export const fetchUserExercises = id => {
 
 export const updateId = id => {
 	return { type: UPDATE_ID, payload: id };
+};
+
+export const updateIdExercise = id => {
+	return { type: UPDATE_ID_EXERCISE, payload: id };
 };
 
 export const updateToken = token => {

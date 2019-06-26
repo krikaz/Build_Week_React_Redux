@@ -18,6 +18,8 @@ const FormContainer = styled.div`
 `;
 
 export default function UpdateExercise(props) {
+
+
 	const onUpdateExercise = () => {
 		const existingExercise = {
 			name: nameRef.current.value,
@@ -28,7 +30,8 @@ export default function UpdateExercise(props) {
 			date: dateRef.current.value,
 		};
 
-		props.updateExercise(props.exerciseId, props.token, existingExercise);
+    console.log('params', props);
+		// props.updateExercise(props.params.id, props.token, existingExercise);
 	};
 
 	return (

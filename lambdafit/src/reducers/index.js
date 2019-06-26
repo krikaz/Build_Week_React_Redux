@@ -16,6 +16,7 @@ const initialState = {
 	user: [],
 	exercises: [],
 	isLoggedIn: false,
+	idExercise: null,
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -106,6 +107,11 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				isLoggedIn: true,
 			};
+		case types.UPDATE_ID_EXERCISE:
+			return {
+				...state,
+				idExercise: action.payload,
+			};	
 		case types.FETCHING_USER_EXERCISES:
 			return {
 				...state,

@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import * as actions from './actions';
+import styled from 'styled-components';
+
 import Register from './components/register';
 import Login from './components/login';
 import Home from './components/home';
 import UserInfo from './components/userInfo';
 import UserExercises from './components/userExercises';
 import Logout from './components/logout';
-import styled from 'styled-components';
 
 const Nav = styled.nav`
 	display: flex;
@@ -75,6 +76,7 @@ function mapStateToProps(state) {
 		user: state.user,
 		exercises: state.exercises,
 		isLoggedIn: state.isLoggedIn,
+		idExercise: state.idExercise,
 	};
 }
 
