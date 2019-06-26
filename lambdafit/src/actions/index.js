@@ -29,6 +29,35 @@ export const CREATING_NEW_EXERCISE = 'CREATING_NEW_EXERCISE';
 export const CREATING_NEW_EXERCISE_SUCCESS = 'CREATING_NEW_EXERCISE_SUCCESS';
 export const CREATING_NEW_EXERCISE_FAILURE = 'CREATING_NEW_EXERCISE_FAILURE';
 
+export const DELETING_EXERCISE = 'DELETING_EXERCISE';
+export const DELETING_EXERCISE_SUCCESS = 'DELETING_EXERCISE_SUCCESS';
+export const DELETING_EXERCISE_FAILURE = 'DELETING_EXERCISE_FAILURE';
+
+export const deleteExercise = (id, token) => {
+	return function(dispatch) {
+		dispatch({ type: DELETING_EXERCISE });
+		console.log('deleting exercise');
+		// console.log(exercise);
+		axios
+			.delete('https://lambdafit.herokuapp.com/exercises/' + id, {
+				headers: { Authorization: token },
+			})
+			.then(res => {
+				dispatch({ type: DELETING_EXERCISE_SUCCESS });
+				// console.log(res.data);
+				console.log('succces');
+			})
+			.catch(error => {
+				dispatch({
+					type: DELETING_EXERCISE_FAILURE,
+					payload: error.message,
+				});
+				console.log('failure');
+				console.log(error.message);
+			});
+	};
+};
+
 export const createNewExercise = (token, exercise) => {
 	return function(dispatch) {
 		dispatch({ type: CREATING_NEW_EXERCISE });

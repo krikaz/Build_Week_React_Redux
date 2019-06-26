@@ -7,6 +7,7 @@ export default function Home(props) {
 		if (props.id === null) {
 			props.updateId(retrievedObject.user_id);
 			props.updateToken(retrievedObject.token);
+			console.log(retrievedObject.token);
 		}
 
 		return (

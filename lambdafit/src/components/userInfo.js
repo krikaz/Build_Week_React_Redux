@@ -39,6 +39,15 @@ export default function UserInfo(props) {
 	// 	// console.log(props);
 	// }
 
+	if (localStorage.getItem('user')) {
+		const retrievedObject = JSON.parse(localStorage.getItem('user'));
+		if (props.id === null) {
+			props.updateId(retrievedObject.user_id);
+			props.updateToken(retrievedObject.token);
+			console.log(retrievedObject.token);
+		}
+	}
+
 	if (props.user[0]) {
 		return (
 			<Container>

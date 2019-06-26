@@ -7,6 +7,7 @@ const initialState = {
 	updatingUserInfo: false,
 	fetchingUserExercises: false,
 	creatingNewExercise: false,
+	deletingExercise: false,
 	token: null,
 	error: null,
 	id: null,
@@ -130,6 +131,23 @@ export const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				creatingNewExercise: false,
+				error: action.payload,
+			};
+		case types.DELETING_EXERCISE:
+			return {
+				...state,
+				deletingExercise: true,
+			};
+		case types.DELETING_EXERCISE_SUCCESS:
+			return {
+				...state,
+				deletingExercise: false,
+				exercises: [...state.exercises],
+			};
+		case types.DELETING_EXERCISE_FAILURE:
+			return {
+				...state,
+				deletingExercise: false,
 				error: action.payload,
 			};
 		default:

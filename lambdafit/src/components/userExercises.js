@@ -17,11 +17,33 @@ const ContainerExercises = styled.div`
 	justify-content: space-evenly;
 `;
 
+const ContainerButton = styled.div`
+	display: flex;
+	justify-content: flex-end;
+`;
+
+const StyledButton = styled.button`
+	width: 10%;
+`;
+
 export default function Exercises(props) {
 	const onFetchUserExercises = () => {
 		props.fetchUserExercises(props.id);
 		// console.log(props.exercises);
 	};
+
+	const onDeleteExercise = id => {
+		props.deleteExercise(id, props.token);
+	};
+
+	if (localStorage.getItem('user')) {
+		const retrievedObject = JSON.parse(localStorage.getItem('user'));
+		if (props.id === null) {
+			props.updateId(retrievedObject.user_id);
+			props.updateToken(retrievedObject.token);
+			console.log(retrievedObject.token);
+		}
+	}
 
 	if (props.exercises[0]) {
 		// console.log(props.exercises);
@@ -31,6 +53,11 @@ export default function Exercises(props) {
 					{props.exercises.map(ex => {
 						return (
 							<SingleExercise key={ex.id}>
+								<ContainerButton>
+									<StyledButton onClick={() => onDeleteExercise(ex.id)}>
+										X
+									</StyledButton>
+								</ContainerButton>
 								<p>name = {ex.name}</p>
 								<p>body region worked = {ex.body_region}</p>
 								<p>amount lifted = {ex.amount_lifted}</p>
@@ -41,8 +68,6 @@ export default function Exercises(props) {
 						);
 					})}
 				</ContainerExercises>
-
-				<ExerciseForm {...props} />
 			</div>
 		);
 	} else {
@@ -51,6 +76,7 @@ export default function Exercises(props) {
 		return (
 			<div>
 				<button onClick={onFetchUserExercises}>fetch</button>
+				<ExerciseForm {...props} />
 			</div>
 		);
 	}
