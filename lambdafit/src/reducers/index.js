@@ -114,7 +114,6 @@ export const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				fetchingUserExercises: false,
-				// exercises: [...state.exercises, action.payload],
 				exercises: action.payload,
 			};
 		case types.FETCHING_USER_EXERCISES_FAILURE:

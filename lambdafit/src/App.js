@@ -7,6 +7,7 @@ import Login from './components/login';
 import Home from './components/home';
 import UserInfo from './components/userInfo';
 import UserExercises from './components/userExercises';
+import Logout from './components/logout';
 import styled from 'styled-components';
 
 const Nav = styled.nav`
@@ -36,26 +37,25 @@ class App extends React.Component {
 			<BrowserRouter>
 				<Nav>
 					<Link to="/">Home</Link>
-
 					{!this.props.isLoggedIn && <Link to="/register">Register</Link>}
-
 					{!this.props.isLoggedIn && <Link to="/login">Log in</Link>}
 
 					{this.props.isLoggedIn && <Link to="/myinfo">My account</Link>}
-
 					{this.props.isLoggedIn && <Link to="/myexercises">My exercises</Link>}
+					{this.props.isLoggedIn && <Link to="/logout">Log out</Link>}
 				</Nav>
 
 				<Route path="/" exact render={() => <Home {...this.props} />} />
 
-				<Route path="/register/" render={() => <Register {...this.props} />} />
-				<Route path="/login/" render={() => <Login {...this.props} />} />
+				<Route path="/register" render={() => <Register {...this.props} />} />
+				<Route path="/login" render={() => <Login {...this.props} />} />
 
 				<Route path="/myinfo" render={() => <UserInfo {...this.props} />} />
 				<Route
 					path="/myexercises"
 					render={() => <UserExercises {...this.props} />}
 				/>
+				<Route path="/logout" component={Logout} />
 			</BrowserRouter>
 		);
 	}
