@@ -34,6 +34,12 @@ export const DELETING_EXERCISE = 'DELETING_EXERCISE';
 export const DELETING_EXERCISE_SUCCESS = 'DELETING_EXERCISE_SUCCESS';
 export const DELETING_EXERCISE_FAILURE = 'DELETING_EXERCISE_FAILURE';
 
+export const LOGOUT = 'LOGOUT';
+
+export const logout = () => {
+	return { type: LOGOUT };
+};
+
 export const deleteExercise = (id, token) => {
 	return function(dispatch) {
 		dispatch({ type: DELETING_EXERCISE });
@@ -47,7 +53,7 @@ export const deleteExercise = (id, token) => {
 				dispatch({ type: DELETING_EXERCISE_SUCCESS });
 				// console.log(res.data);
 				console.log('succces');
-				window.location = '/myexercises';
+				window.location = '/';
 			})
 			.catch(error => {
 				dispatch({
@@ -73,7 +79,7 @@ export const createNewExercise = (token, exercise) => {
 				dispatch({ type: CREATING_NEW_EXERCISE_SUCCESS, payload: res.data });
 				// console.log(res.data);
 				console.log('succces');
-				window.location = '/myexercises';
+				// window.location = '/';
 			})
 			.catch(error => {
 				dispatch({
@@ -203,7 +209,7 @@ export const updateUserInfo = (id, existingUser) => {
 				dispatch({ type: UPDATING_USER_INFO_SUCCESS, payload: res.data });
 				// console.log(res.data);
 				console.log('succces');
-				window.location = '/myinfo';
+				window.location = '/';
 			})
 			.catch(error => {
 				dispatch({ type: UPDATING_USER_INFO_FAILURE, payload: error.message });

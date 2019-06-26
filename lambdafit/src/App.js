@@ -55,7 +55,7 @@ class App extends React.Component {
 					path="/myexercises"
 					render={() => <UserExercises {...this.props} />}
 				/>
-				<Route path="/logout" component={Logout} />
+				<Route path="/logout" render={() => <Logout {...this.props} />} />
 			</BrowserRouter>
 		);
 	}

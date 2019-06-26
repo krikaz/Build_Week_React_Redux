@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import ExerciseForm from './exerciseForm';
 
@@ -27,24 +27,28 @@ const StyledButton = styled.button`
 `;
 
 export default function Exercises(props) {
-	const onFetchUserExercises = () => {
+	// const onFetchUserExercises = () => {
+	// 	props.fetchUserExercises(props.id);
+	// 	console.log(props.exercises);
+	// };
+
+	useEffect(() => {
 		props.fetchUserExercises(props.id);
-		// console.log(props.exercises);
-	};
+	}, []);
 
 	const onDeleteExercise = id => {
 		props.deleteExercise(id, props.token);
 	};
 
-	if (localStorage.getItem('user')) {
-		const retrievedObject = JSON.parse(localStorage.getItem('user'));
-		if (props.id === null) {
-			props.updateId(retrievedObject.user_id);
-			props.updateToken(retrievedObject.token);
-			props.updateIsLoggedIn();
-			// console.log(retrievedObject.token);
-		}
-	}
+	// if (localStorage.getItem('user')) {
+	// 	const retrievedObject = JSON.parse(localStorage.getItem('user'));
+	// 	if (props.id === null) {
+	// 		props.updateId(retrievedObject.user_id);
+	// 		props.updateToken(retrievedObject.token);
+	// 		props.updateIsLoggedIn();
+	// 		// console.log(retrievedObject.token);
+	// 	}
+	// }
 
 	if (props.exercises[0]) {
 		// console.log(props.exercises);
@@ -77,7 +81,7 @@ export default function Exercises(props) {
 
 		return (
 			<div>
-				<button onClick={onFetchUserExercises}>fetch</button>
+				{/* <button onClick={onFetchUserExercises}>fetch</button> */}
 				<ExerciseForm {...props} />
 			</div>
 		);

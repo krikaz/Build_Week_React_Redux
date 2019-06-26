@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -15,9 +15,13 @@ const emailRef = React.createRef();
 export default function UserInfo(props) {
 	// console.log(props);
 
-	const onCheckUserInfo = () => {
+	// const onCheckUserInfo = () => {
+	// 	props.checkUserInfo(props.id);
+	// };
+
+	useEffect(() => {
 		props.checkUserInfo(props.id);
-	};
+	}, []);
 
 	const onUpdateUserInfo = () => {
 		const existingUser = {
@@ -34,20 +38,15 @@ export default function UserInfo(props) {
 		// window.location.reload();
 	};
 
-	// if (props.id) {
-	// 	props.checkUserInfo(props.id);
-	// 	// console.log(props);
+	// if (localStorage.getItem('user')) {
+	// 	const retrievedObject = JSON.parse(localStorage.getItem('user'));
+	// 	if (props.id === null) {
+	// 		props.updateId(retrievedObject.user_id);
+	// 		props.updateToken(retrievedObject.token);
+	// 		props.updateIsLoggedIn();
+	// 		// console.log(retrievedObject.token);
+	// 	}
 	// }
-
-	if (localStorage.getItem('user')) {
-		const retrievedObject = JSON.parse(localStorage.getItem('user'));
-		if (props.id === null) {
-			props.updateId(retrievedObject.user_id);
-			props.updateToken(retrievedObject.token);
-			props.updateIsLoggedIn();
-			// console.log(retrievedObject.token);
-		}
-	}
 
 	if (props.user[0]) {
 		return (
@@ -95,6 +94,7 @@ export default function UserInfo(props) {
 			</Container>
 		);
 	} else {
-		return <button onClick={onCheckUserInfo}>click</button>;
+		// return <button onClick={onCheckUserInfo}>click</button>;
+		return null;
 	}
 }
