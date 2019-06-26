@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import ExerciseForm from './exerciseForm';
+import UpdateExercise from './updateExercise';
 
 const SingleExercise = styled.div`
 	display: flex;
@@ -74,6 +75,7 @@ export default function Exercises(props) {
 					})}
 				</ContainerExercises>
 				<ExerciseForm {...props} />
+				<UpdateExercise {...props} />
 			</div>
 		);
 	} else {

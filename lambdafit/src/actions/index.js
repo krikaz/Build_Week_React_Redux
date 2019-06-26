@@ -34,6 +34,10 @@ export const DELETING_EXERCISE = 'DELETING_EXERCISE';
 export const DELETING_EXERCISE_SUCCESS = 'DELETING_EXERCISE_SUCCESS';
 export const DELETING_EXERCISE_FAILURE = 'DELETING_EXERCISE_FAILURE';
 
+export const UPDATING_EXERCISE = 'UPDATING_EXERCISE';
+export const UPDATING_EXERCISE_SUCCESS = 'UPDATING_EXERCISE_SUCCESS';
+export const UPDATING_EXERCISE_FAILURE = 'UPDATING_EXERCISE_FAILURE';
+
 export const LOGOUT = 'LOGOUT';
 
 export const logout = () => {
@@ -58,6 +62,32 @@ export const deleteExercise = (id, token) => {
 			.catch(error => {
 				dispatch({
 					type: DELETING_EXERCISE_FAILURE,
+					payload: error.message,
+				});
+				console.log('failure');
+				console.log(error.message);
+			});
+	};
+};
+
+export const updateExercise = (id, token, exercise) => {
+	return function(dispatch) {
+		dispatch({ type: UPDATING_EXERCISE });
+		console.log('updating exercise');
+		// console.log('exercise', exercise);
+		axios
+			.put('https://lambdafit.herokuapp.com/exercises/' + id, exercise, {
+				headers: { Authorization: token },
+			})
+			.then(res => {
+				dispatch({ type: UPDATING_EXERCISE_SUCCESS });
+				// console.log(res.data);
+				console.log('succces');
+				// window.location = '/';
+			})
+			.catch(error => {
+				dispatch({
+					type: UPDATING_EXERCISE_FAILURE,
 					payload: error.message,
 				});
 				console.log('failure');
