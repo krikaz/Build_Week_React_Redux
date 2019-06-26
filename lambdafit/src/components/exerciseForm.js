@@ -19,6 +19,9 @@ const FormContainer = styled.div`
 
 export default function ExerciseForm(props) {
 	console.log('token', props.token);
+	console.log('id', props.id);
+	// console.log('st', "43");
+	// console.log("int", 43);
 
 	const onCreateNewExercise = () => {
 		const newExercise = {

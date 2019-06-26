@@ -62,13 +62,11 @@ export const createNewExercise = (token, exercise) => {
 	return function(dispatch) {
 		dispatch({ type: CREATING_NEW_EXERCISE });
 		console.log('creating new exercise');
-		// console.log(exercise);
+		console.log('exercise', exercise);
 		axios
-			.post(
-				'https://lambdafit.herokuapp.com/exercises',
-				{ headers: { Authorization: token } },
-				exercise
-			)
+			.post('https://lambdafit.herokuapp.com/exercises/', exercise, {
+				headers: { Authorization: token },
+			})
 			.then(res => {
 				dispatch({ type: CREATING_NEW_EXERCISE_SUCCESS, payload: res.data });
 				// console.log(res.data);
