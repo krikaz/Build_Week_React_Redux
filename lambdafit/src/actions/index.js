@@ -18,6 +18,7 @@ export const UPDATING_USER_INFO_FAILURE = 'UPDATING_USER_INFO_FAILURE';
 
 export const UPDATE_ID = 'UPDATE_ID';
 export const UPDATE_TOKEN = 'UPDATE_TOKEN';
+export const UPDATE_ISLOGGEDIN = 'UPDATE_ISLOGGEDIN';
 
 export const FETCHING_USER_EXERCISES = 'FETCHING_USER_EXERCISES';
 export const FETCHING_USER_EXERCISES_SUCCESS =
@@ -111,6 +112,10 @@ export const updateId = id => {
 
 export const updateToken = token => {
 	return { type: UPDATE_TOKEN, payload: token };
+};
+
+export const updateIsLoggedIn = () => {
+	return { type: UPDATE_ISLOGGEDIN };
 };
 
 export const registerUser = ({ username, password }) => {

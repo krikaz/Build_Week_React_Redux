@@ -16,19 +16,34 @@ const Nav = styled.nav`
 `;
 
 class App extends React.Component {
+	update = () => {
+		if (localStorage.getItem('user')) {
+			const retrievedObject = JSON.parse(localStorage.getItem('user'));
+			if (this.props.id === null) {
+				this.props.updateId(retrievedObject.user_id);
+				this.props.updateToken(retrievedObject.token);
+				this.props.updateIsLoggedIn();
+				// console.log(retrievedObject.token);
+				console.log('isloggedIn', this.props.isLoggedIn);
+			}
+		}
+	};
 	render() {
+		this.update();
+		console.log('isloggedIn', this.props.isLoggedIn);
+
 		return (
 			<BrowserRouter>
 				<Nav>
 					<Link to="/">Home</Link>
 
-					<Link to="/register">Register</Link>
+					{!this.props.isLoggedIn && <Link to="/register">Register</Link>}
 
-					<Link to="/login">Log in</Link>
+					{!this.props.isLoggedIn && <Link to="/login">Log in</Link>}
 
-					<Link to="/myinfo">My account</Link>
+					{this.props.isLoggedIn && <Link to="/myinfo">My account</Link>}
 
-					<Link to="/myexercises">My exercises</Link>
+					{this.props.isLoggedIn && <Link to="/myexercises">My exercises</Link>}
 				</Nav>
 
 				<Route path="/" exact render={() => <Home {...this.props} />} />
@@ -59,6 +74,7 @@ function mapStateToProps(state) {
 		message: state.message,
 		user: state.user,
 		exercises: state.exercises,
+		isLoggedIn: state.isLoggedIn,
 	};
 }
 

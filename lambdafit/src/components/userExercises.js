@@ -41,7 +41,8 @@ export default function Exercises(props) {
 		if (props.id === null) {
 			props.updateId(retrievedObject.user_id);
 			props.updateToken(retrievedObject.token);
-			console.log(retrievedObject.token);
+			props.updateIsLoggedIn();
+			// console.log(retrievedObject.token);
 		}
 	}
 

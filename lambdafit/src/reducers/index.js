@@ -14,6 +14,7 @@ const initialState = {
 	message: '',
 	user: [],
 	exercises: [],
+	isLoggedIn: false,
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -47,6 +48,7 @@ export const rootReducer = (state = initialState, action) => {
 				token: action.payload.token,
 				message: action.payload.message,
 				id: action.payload.id,
+				isLoggedIn: true,
 			};
 		case types.LOGGING_IN_USER_FAILURE:
 			return {
@@ -97,6 +99,11 @@ export const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				token: action.payload,
+			};
+		case types.UPDATE_ISLOGGEDIN:
+			return {
+				...state,
+				isLoggedIn: true,
 			};
 		case types.FETCHING_USER_EXERCISES:
 			return {
