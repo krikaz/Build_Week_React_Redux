@@ -89,28 +89,22 @@ class App extends React.Component {
 
 					<RouteContainer>
 						<Route path="/" exact render={() => <Home {...this.props} />} />
-					</RouteContainer>
 
-					<RouteContainer>
 						<Route
 							path="/register"
 							render={() => <Register {...this.props} />}
 						/>
-					</RouteContainer>
 
-					<RouteContainer>
 						<Route path="/login" render={() => <Login {...this.props} />} />
-					</RouteContainer>
 
-					<RouteContainer>
 						<Route path="/myinfo" render={() => <UserInfo {...this.props} />} />
-					</RouteContainer>
 
-					<Route
-						path="/myexercises"
-						render={() => <UserExercises {...this.props} />}
-					/>
-					<Route path="/logout" render={() => <Logout {...this.props} />} />
+						<Route
+							path="/myexercises"
+							render={() => <UserExercises {...this.props} />}
+						/>
+						<Route path="/logout" render={() => <Logout {...this.props} />} />
+					</RouteContainer>
 				</StyledContainer>
 			</BrowserRouter>
 		);

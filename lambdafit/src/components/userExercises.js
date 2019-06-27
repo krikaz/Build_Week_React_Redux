@@ -36,7 +36,7 @@ export default function Exercises(props) {
 
 	useEffect(() => {
 		props.fetchUserExercises(props.id);
-	}, [props]);
+	}, []);
 
 	const onDeleteExercise = id => {
 		props.deleteExercise(id, props.token);
