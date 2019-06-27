@@ -20,15 +20,6 @@ export default function Exercises(props) {
 			<div>
 				<ContainerExercises>
 					{props.exercises.map(ex => {
-						// const exercise = {
-						// 	id: ex.id,
-						// 	name: ex.name,
-						// 	body_region: ex.body_region,
-						// 	amount_lifted: ex.amount_lifted,
-						// 	reps: ex.reps,
-						// 	sets: ex.sets,
-						// 	date: ex.date,
-						// };
 						return <ExerciseCard key={ex.id} props={props} ex={ex}/>;
 					})}
 				</ContainerExercises>

@@ -25,7 +25,6 @@ const FormContainer = styled.div`
 
 const StyledInput = styled.input`
 	font-size: 1rem;
-	/* margin: 0.5rem; */
 `;
 
 const StyledButton = styled.button`

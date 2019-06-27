@@ -20,7 +20,6 @@ export default function Home(props) {
 			props.updateId(retrievedObject.user_id);
 			props.updateToken(retrievedObject.token);
 			props.updateIsLoggedIn();
-			// console.log(retrievedObject.token);
 		}
 
 		return (

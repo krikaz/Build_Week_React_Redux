@@ -54,14 +54,11 @@ class App extends React.Component {
 				this.props.updateId(retrievedObject.user_id);
 				this.props.updateToken(retrievedObject.token);
 				this.props.updateIsLoggedIn();
-				// console.log(retrievedObject.token);
-				console.log('isloggedIn', this.props.isLoggedIn);
 			}
 		}
 	};
 	render() {
 		this.update();
-		console.log('isloggedIn', this.props.isLoggedIn);
 
 		return (
 			<BrowserRouter>
