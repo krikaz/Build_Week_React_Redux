@@ -86,13 +86,26 @@ class App extends React.Component {
 							<StyledLink to="/logout">Log out</StyledLink>
 						)}
 					</StyledNav>
+
 					<RouteContainer>
 						<Route path="/" exact render={() => <Home {...this.props} />} />
 					</RouteContainer>
-					<Route path="/register" render={() => <Register {...this.props} />} />
-					<Route path="/login" render={() => <Login {...this.props} />} />
 
-					<Route path="/myinfo" render={() => <UserInfo {...this.props} />} />
+					<RouteContainer>
+						<Route
+							path="/register"
+							render={() => <Register {...this.props} />}
+						/>
+					</RouteContainer>
+
+					<RouteContainer>
+						<Route path="/login" render={() => <Login {...this.props} />} />
+					</RouteContainer>
+
+					<RouteContainer>
+						<Route path="/myinfo" render={() => <UserInfo {...this.props} />} />
+					</RouteContainer>
+
 					<Route
 						path="/myexercises"
 						render={() => <UserExercises {...this.props} />}
