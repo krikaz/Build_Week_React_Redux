@@ -18,6 +18,8 @@ const StyledContainer = styled.div`
 	background-size: 100%;
 	width: 100vw;
 	height: 100vh;
+	display: flex;
+	flex-direction: column;
 `;
 
 const StyledNav = styled.nav`
@@ -32,9 +34,16 @@ const StyledLink = styled(Link)`
 	text-decoration: none;
 	color: rgb(3, 84, 16);
 	:hover {
-		background-color: rgb(21, 5, 99);
-		color: rgba(220, 240, 240, 0.95);
+		background-color: rgb(3, 84, 16);
+		color: rgb(255, 183, 82, 0.9);
 	}
+`;
+
+const RouteContainer = styled.div`
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
 
 class App extends React.Component {
@@ -77,9 +86,9 @@ class App extends React.Component {
 							<StyledLink to="/logout">Log out</StyledLink>
 						)}
 					</StyledNav>
-
-					<Route path="/" exact render={() => <Home {...this.props} />} />
-
+					<RouteContainer>
+						<Route path="/" exact render={() => <Home {...this.props} />} />
+					</RouteContainer>
 					<Route path="/register" render={() => <Register {...this.props} />} />
 					<Route path="/login" render={() => <Login {...this.props} />} />
 
