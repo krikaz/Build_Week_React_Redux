@@ -20,7 +20,7 @@ export default function Exercises(props) {
 			<div>
 				<ContainerExercises>
 					{props.exercises.map(ex => {
-						return <ExerciseCard key={ex.id} props={props} ex={ex}/>;
+						return <ExerciseCard key={ex.id} props={props} ex={ex} />;
 					})}
 				</ContainerExercises>
 				<ExerciseForm {...props} />
