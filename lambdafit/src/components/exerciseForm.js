@@ -11,17 +11,31 @@ const dateRef = React.createRef();
 const FormContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	background-color: lightsalmon;
+	background-color: rgb(255, 183, 82, 0.9);
+	color: rgb(3, 84, 16);
+
 	width: 50%;
 	padding: 1rem;
 	margin: 1rem;
+
+	label {
+		padding: 0.2rem;
+	}
 `;
 
+const StyledInput = styled.input`
+	font-size: 1rem;
+	/* margin: 0.5rem; */
+`;
+
+const StyledButton = styled.button`
+	width: auto;
+	margin-top: 1rem;
+`;
+
+
+
 export default function ExerciseForm(props) {
-	console.log('token', props.token);
-	console.log('id', props.id);
-	// console.log('st', "43");
-	// console.log("int", 43);
 
 	const onCreateNewExercise = () => {
 		const newExercise = {
@@ -42,30 +56,30 @@ export default function ExerciseForm(props) {
 			<h3>Create New Exercise</h3>
 			<label>
 				name :
-				<input type="text" ref={nameRef} />
+				<StyledInput type="text" ref={nameRef} />
 			</label>
 			<label>
 				body region :
-				<input type="text" ref={bodyRegionRef} />
+				<StyledInput type="text" ref={bodyRegionRef} />
 			</label>
 			<label>
 				amount lifted :
-				<input type="text" ref={amountLiftedRef} />
+				<StyledInput type="text" ref={amountLiftedRef} />
 			</label>
 			<label>
 				reps :
-				<input type="text" ref={repsRef} />
+				<StyledInput type="text" ref={repsRef} />
 			</label>
 			<label>
 				sets :
-				<input type="text" ref={setsRef} />
+				<StyledInput type="text" ref={setsRef} />
 			</label>
 			<label>
 				date :
-				<input type="text" ref={dateRef} />
+				<StyledInput type="text" ref={dateRef} />
 			</label>
 
-			<button onClick={onCreateNewExercise}>Create Exercise</button>
+			<StyledButton onClick={onCreateNewExercise}>Create Exercise</StyledButton>
 		</FormContainer>
 	);
 }
