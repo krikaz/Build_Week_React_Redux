@@ -47,19 +47,23 @@ const RouteContainer = styled.div`
 `;
 
 class App extends React.Component {
+	componentDidMount() {
+		this.update();
+	}
+
 	update = () => {
 		if (localStorage.getItem('user')) {
 			const retrievedObject = JSON.parse(localStorage.getItem('user'));
 			if (this.props.id === null) {
 				this.props.updateId(retrievedObject.user_id);
 				this.props.updateToken(retrievedObject.token);
+				this.props.updateMessage(retrievedObject.message);
 				this.props.updateIsLoggedIn();
 			}
 		}
 	};
-	render() {
-		this.update();
 
+	render() {
 		return (
 			<BrowserRouter>
 				<StyledContainer>

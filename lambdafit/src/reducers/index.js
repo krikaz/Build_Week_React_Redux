@@ -102,6 +102,11 @@ export const rootReducer = (state = initialState, action) => {
 				...state,
 				token: action.payload,
 			};
+		case types.UPDATE_MESSAGE:
+			return {
+				...state,
+				message: action.payload,
+			}	
 		case types.UPDATE_ISLOGGEDIN:
 			return {
 				...state,

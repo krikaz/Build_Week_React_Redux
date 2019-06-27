@@ -14,17 +14,18 @@ const StyledContainer = styled.div`
 `;
 
 export default function Home(props) {
-	if (localStorage.getItem('user')) {
-		const retrievedObject = JSON.parse(localStorage.getItem('user'));
-		if (props.id === null) {
-			props.updateId(retrievedObject.user_id);
-			props.updateToken(retrievedObject.token);
-			props.updateIsLoggedIn();
-		}
+	// if (localStorage.getItem('user')) {
+	// 	const retrievedObject = JSON.parse(localStorage.getItem('user'));
+	// 	if (props.id === null) {
+	// 		props.updateId(retrievedObject.user_id);
+	// 		props.updateToken(retrievedObject.token);
+	// 		props.updateIsLoggedIn();
+	// 	}
 
+	if (props.message) {
 		return (
 			<StyledContainer>
-				<p>{retrievedObject.message}</p>
+				<p>{props.message}</p>
 			</StyledContainer>
 		);
 	} else {

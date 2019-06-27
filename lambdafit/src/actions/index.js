@@ -18,6 +18,7 @@ export const UPDATING_USER_INFO_FAILURE = 'UPDATING_USER_INFO_FAILURE';
 
 export const UPDATE_ID = 'UPDATE_ID';
 export const UPDATE_TOKEN = 'UPDATE_TOKEN';
+export const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
 export const UPDATE_ISLOGGEDIN = 'UPDATE_ISLOGGEDIN';
 export const UPDATE_ID_EXERCISE = 'UPDATE_ID_EXERCISE';
 
@@ -57,7 +58,7 @@ export const deleteExercise = (id, token) => {
 			.then(res => {
 				dispatch({ type: DELETING_EXERCISE_SUCCESS });
 				// console.log(res.data);
-				console.log('succces');
+				// console.log('succces');
 				window.location = '/';
 			})
 			.catch(error => {
@@ -65,7 +66,7 @@ export const deleteExercise = (id, token) => {
 					type: DELETING_EXERCISE_FAILURE,
 					payload: error.message,
 				});
-				console.log('failure');
+				// console.log('failure');
 				console.log(error.message);
 			});
 	};
@@ -83,7 +84,7 @@ export const updateExercise = (id, token, exercise) => {
 			.then(res => {
 				dispatch({ type: UPDATING_EXERCISE_SUCCESS });
 				// console.log(res.data);
-				console.log('succces');
+				// console.log('succces');
 				// window.location = '/';
 			})
 			.catch(error => {
@@ -91,7 +92,7 @@ export const updateExercise = (id, token, exercise) => {
 					type: UPDATING_EXERCISE_FAILURE,
 					payload: error.message,
 				});
-				console.log('failure');
+				// console.log('failure');
 				console.log(error.message);
 			});
 	};
@@ -109,7 +110,7 @@ export const createNewExercise = (token, exercise) => {
 			.then(res => {
 				dispatch({ type: CREATING_NEW_EXERCISE_SUCCESS, payload: res.data });
 				// console.log(res.data);
-				console.log('succces');
+				// console.log('succces');
 				// window.location = '/';
 			})
 			.catch(error => {
@@ -117,7 +118,7 @@ export const createNewExercise = (token, exercise) => {
 					type: CREATING_NEW_EXERCISE_FAILURE,
 					payload: error.message,
 				});
-				console.log('failure');
+				// console.log('failure');
 				console.log(error.message);
 			});
 	};
@@ -131,7 +132,7 @@ export const fetchUserExercises = id => {
 			.get('https://lambdafit.herokuapp.com/user/' + id + '/exercises')
 			.then(res => {
 				dispatch({ type: FETCHING_USER_EXERCISES_SUCCESS, payload: res.data });
-				console.log('succces');
+				// console.log('succces');
 				// console.log(res.data);
 				// window.location = '/myexercises';
 			})
@@ -140,7 +141,7 @@ export const fetchUserExercises = id => {
 					type: FETCHING_USER_EXERCISES_SUCCESS,
 					payload: error.message,
 				});
-				console.log('failure');
+				// console.log('failure');
 				console.log(error.message);
 			});
 	};
@@ -150,8 +151,8 @@ export const updateId = id => {
 	return { type: UPDATE_ID, payload: id };
 };
 
-export const updateIdExercise = id => {
-	return { type: UPDATE_ID_EXERCISE, payload: id };
+export const updateMessage = message => {
+	return { type: UPDATE_MESSAGE, payload: message };
 };
 
 export const updateToken = token => {
@@ -160,6 +161,10 @@ export const updateToken = token => {
 
 export const updateIsLoggedIn = () => {
 	return { type: UPDATE_ISLOGGEDIN };
+};
+
+export const updateIdExercise = id => {
+	return { type: UPDATE_ID_EXERCISE, payload: id };
 };
 
 export const registerUser = ({ username, password }) => {
@@ -172,13 +177,13 @@ export const registerUser = ({ username, password }) => {
 			.then(res => {
 				dispatch({ type: REGISTERING_USER_SUCCESS, payload: res.data.token });
 				window.localStorage.setItem('token', res.data.token);
-				console.log('succces');
+				// console.log('succces');
 				// console.log(res.data.token);
 				window.location = '/login';
 			})
 			.catch(error => {
 				dispatch({ type: REGISTERING_USER_FAILURE, payload: error.message });
-				console.log('failure');
+				// console.log('failure');
 				console.log(error.message);
 			});
 	};
@@ -201,14 +206,14 @@ export const loggingInUser = ({ username, password }) => {
 					},
 				});
 				window.localStorage.setItem('user', JSON.stringify(res.data));
-				console.log('succces');
+				// console.log('succces');
 				// console.log(res.data.token);
 				// console.log(res.data.message);
 				window.location = '/';
 			})
 			.catch(error => {
 				dispatch({ type: LOGGING_IN_USER_FAILURE, payload: error.message });
-				console.log('failure');
+				// console.log('failure');
 				console.log(error.message);
 			});
 	};
@@ -223,11 +228,11 @@ export const checkUserInfo = id => {
 			.then(res => {
 				dispatch({ type: CHECKING_USER_INFO_SUCCESS, payload: res.data });
 				// console.log(res.data);
-				console.log('succces');
+				// console.log('succces');
 			})
 			.catch(error => {
 				dispatch({ type: CHECKING_USER_INFO_FAILURE, payload: error.message });
-				console.log('failure');
+				// console.log('failure');
 				console.log(error.message);
 			});
 	};
@@ -243,12 +248,12 @@ export const updateUserInfo = (id, existingUser) => {
 			.then(res => {
 				dispatch({ type: UPDATING_USER_INFO_SUCCESS, payload: res.data });
 				// console.log(res.data);
-				console.log('succces');
+				// console.log('succces');
 				window.location = '/';
 			})
 			.catch(error => {
 				dispatch({ type: UPDATING_USER_INFO_FAILURE, payload: error.message });
-				console.log('failure');
+				// console.log('failure');
 				console.log(error.message);
 			});
 	};
