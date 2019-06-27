@@ -11,10 +11,24 @@ import UserInfo from './components/userInfo';
 import UserExercises from './components/userExercises';
 import Logout from './components/logout';
 
-const Nav = styled.nav`
+import imgLogin from './images/login.jpg';
+
+const StyledContainer = styled.div`
+	background-image: url(${imgLogin});
+	background-size: 100%;
+	width: 100vw;
+	height: 100vh;
+`;
+
+const StyledNav = styled.nav`
 	display: flex;
 	justify-content: space-around;
-	margin: 1rem;
+	padding: 1rem;
+	background-color: rgba(117, 190, 218, 0.9);
+`;
+
+const StyledLink = styled.link`
+	text-decoration: none;
 `;
 
 class App extends React.Component {
@@ -36,27 +50,31 @@ class App extends React.Component {
 
 		return (
 			<BrowserRouter>
-				<Nav>
-					<Link to="/">Home</Link>
-					{!this.props.isLoggedIn && <Link to="/register">Register</Link>}
-					{!this.props.isLoggedIn && <Link to="/login">Log in</Link>}
+				<StyledContainer>
+					<StyledNav>
+						<Link to="/">Home</Link>
+						{!this.props.isLoggedIn && <Link to="/register">Register</Link>}
+						{!this.props.isLoggedIn && <Link to="/login">Log in</Link>}
 
-					{this.props.isLoggedIn && <Link to="/myinfo">My account</Link>}
-					{this.props.isLoggedIn && <Link to="/myexercises">My exercises</Link>}
-					{this.props.isLoggedIn && <Link to="/logout">Log out</Link>}
-				</Nav>
+						{this.props.isLoggedIn && <Link to="/myinfo">My account</Link>}
+						{this.props.isLoggedIn && (
+							<Link to="/myexercises">My exercises</Link>
+						)}
+						{this.props.isLoggedIn && <Link to="/logout">Log out</Link>}
+					</StyledNav>
 
-				<Route path="/" exact render={() => <Home {...this.props} />} />
+					<Route path="/" exact render={() => <Home {...this.props} />} />
 
-				<Route path="/register" render={() => <Register {...this.props} />} />
-				<Route path="/login" render={() => <Login {...this.props} />} />
+					<Route path="/register" render={() => <Register {...this.props} />} />
+					<Route path="/login" render={() => <Login {...this.props} />} />
 
-				<Route path="/myinfo" render={() => <UserInfo {...this.props} />} />
-				<Route
-					path="/myexercises"
-					render={() => <UserExercises {...this.props} />}
-				/>
-				<Route path="/logout" render={() => <Logout {...this.props} />} />
+					<Route path="/myinfo" render={() => <UserInfo {...this.props} />} />
+					<Route
+						path="/myexercises"
+						render={() => <UserExercises {...this.props} />}
+					/>
+					<Route path="/logout" render={() => <Logout {...this.props} />} />
+				</StyledContainer>
 			</BrowserRouter>
 		);
 	}
