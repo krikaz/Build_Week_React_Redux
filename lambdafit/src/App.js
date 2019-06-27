@@ -24,11 +24,17 @@ const StyledNav = styled.nav`
 	display: flex;
 	justify-content: space-around;
 	padding: 1rem;
-	background-color: rgba(117, 190, 218, 0.9);
+	background-color: rgb(255, 183, 82, 0.9);
 `;
 
-const StyledLink = styled.link`
+const StyledLink = styled(Link)`
+	font-size: 2rem;
 	text-decoration: none;
+	color: rgb(3, 84, 16);
+	:hover {
+		background-color: rgb(21, 5, 99);
+		color: rgba(220, 240, 240, 0.95);
+	}
 `;
 
 class App extends React.Component {
@@ -52,15 +58,24 @@ class App extends React.Component {
 			<BrowserRouter>
 				<StyledContainer>
 					<StyledNav>
-						<Link to="/">Home</Link>
-						{!this.props.isLoggedIn && <Link to="/register">Register</Link>}
-						{!this.props.isLoggedIn && <Link to="/login">Log in</Link>}
+						<StyledLink to="/">Home</StyledLink>
 
-						{this.props.isLoggedIn && <Link to="/myinfo">My account</Link>}
-						{this.props.isLoggedIn && (
-							<Link to="/myexercises">My exercises</Link>
+						{!this.props.isLoggedIn && (
+							<StyledLink to="/register">Register</StyledLink>
 						)}
-						{this.props.isLoggedIn && <Link to="/logout">Log out</Link>}
+						{!this.props.isLoggedIn && (
+							<StyledLink to="/login">Log in</StyledLink>
+						)}
+
+						{this.props.isLoggedIn && (
+							<StyledLink to="/myinfo">My account</StyledLink>
+						)}
+						{this.props.isLoggedIn && (
+							<StyledLink to="/myexercises">My exercises</StyledLink>
+						)}
+						{this.props.isLoggedIn && (
+							<StyledLink to="/logout">Log out</StyledLink>
+						)}
 					</StyledNav>
 
 					<Route path="/" exact render={() => <Home {...this.props} />} />
