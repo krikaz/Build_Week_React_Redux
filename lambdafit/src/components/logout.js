@@ -1,17 +1,6 @@
 import { useEffect } from 'react';
 
 export default function Logout(props) {
-	// const onLogOut = () => {
-	// 	localStorage.clear();
-	// };
-
-	// return (
-	// 	<div>
-	// 		<button type="submit" onClick={onLogOut}>
-	// 			Log Out
-	// 		</button>
-	// 	</div>
-	// );
 
 	useEffect(() => {
 		if (props.isLoggedIn) {
